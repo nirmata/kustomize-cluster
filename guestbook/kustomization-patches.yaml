@@ -1,0 +1,15 @@
+clusterPatches:
+- target:
+     kind: Cluster
+     labelSelector:
+         cluster-name: "cluster-001"
+  kustomizePatch: ./cluster-001/
+- target:
+     kind: Cluster
+     name: cluster-002
+  kustomizePatch: ./cluster-002/
+- target:
+     kind: Cluster
+     name: cluster-003
+     labelSelector:
+         cluster-type: eks 
