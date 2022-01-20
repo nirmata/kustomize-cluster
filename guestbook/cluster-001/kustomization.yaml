@@ -1,0 +1,32 @@
+resources:
+- ../base/
+patchesStrategicMerge:
+- |-
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: frontend
+      labels:
+        app.kubernetes.io/name: guestbook
+        app.kubernetes.io/component: frontend
+    spec:
+      selector:
+        matchLabels:
+          app.kubernetes.io/name: guestbook
+          app.kubernetes.io/component: frontend
+      replicas: 1
+      template:
+        metadata:
+          labels:
+            app.kubernetes.io/name: guestbook
+            app.kubernetes.io/component: frontend
+        spec:
+          containers:
+          - name: guestbook
+            resources:
+              requests:
+                cpu: 10m
+                memory: 10Mi
+              limits:
+                cpu: 510m
+                memory: 510Mi
